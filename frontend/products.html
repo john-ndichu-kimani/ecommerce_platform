@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="logo-items">
+                <h1>Ecommerce</h1>
+               
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><ion-icon name="apps-outline"></ion-icon> Dashboard</a></li>
+                    <li><a href="products.html" class="active"><ion-icon name="cart-outline"></ion-icon> Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="main-content">
+            <div class="heading">
+                <ion-icon name="menu-outline" class="menu"></ion-icon>
+                <h2>Products</h2>
+                <!-- <form>
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form> -->
+                <div class="profile">
+                    <p>Admin</p>   
+                    <ion-icon name="person-circle-outline" class="avatar"></ion-icon>
+                </div>
+            </div>
+
+            <div class="products-wrapper">
+                <div class="add-wrapper">
+                    <p style="color: rgb(83, 82, 84); font-size: 20px; cursor: pointer;">New Product</p>
+                    <ion-icon name="add-circle-outline" class="add-icon"></ion-icon>
+                </div>
+
+                <div class="modal-overlay myModal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close close-icon">&times;</span>
+                        <form class="product-form">
+                            <label for="nameInput">Name</label>
+                            <input type="text" id="nameInput" autocomplete="off" placeholder="Enter name...">
+                            <label for="categoryInput">Category</label>
+                            <input type="text" id="categoryInput" autocomplete="off" placeholder="Enter category...">
+                            <label for="brandInput">Brand</label>
+                            <input type="text" id="brandInput" autocomplete="off" placeholder="Enter brand...">
+                            <label for="descriptionInput">Description</label>
+                            <textarea id="descriptionInput" cols="10" rows="5" placeholder="Enter description..."></textarea>
+                            <label for="priceInput">Price</label>
+                            <input type="number" id="priceInput" autocomplete="off" placeholder="Enter price...">
+                            <label for="imageInput">ImageUrl</label>
+                            <input type="text" id="imageInput" autocomplete="off" placeholder="Enter URL...">
+                            <button type="submit" class="submitBtn">Add Product</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="productsContainer">
+                    <table class="productsTable">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Brand</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Products will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <script src="/frontend/dist/main.js"></script>
+    <script>
+        const menu = document.querySelector('.menu');
+        const sideMenu = document.querySelector('.sidebar');
+
+        menu.addEventListener('click', ()=>{
+            if(sideMenu.style.display==='block'){
+                sideMenu.style.display='none';
+            }
+            else{
+                sideMenu.style.display='block';
+            }
+        })
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

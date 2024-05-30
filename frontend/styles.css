@@ -1,0 +1,330 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: 'poppins', sans-serif;
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.sidebar{
+    padding: 25px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:rgb(32, 32, 32);
+    border: solid white 1px;
+}
+h1{  
+    margin: 10px;
+    color:whitesmoke;
+    border-bottom: solid rgb(128, 126, 126) 1px;
+}
+nav{
+    width: 100%;
+}
+
+ nav ul li{
+
+    list-style: none; 
+    display: flex;
+    margin-top: 70px;
+    flex-direction: column;
+    align-items: center;
+}
+ul li a{
+    color:#fff;
+    text-decoration: none;
+    font-size: 15px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.active{
+    background-color:#03dda0;;
+    padding: 1rem 3rem;
+    color:white;
+}
+
+.main-content{
+    height: 100vh;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;  
+}
+.heading{
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   background-color: rgb(51, 50, 50);
+    border-bottom: solid rgb(244, 242, 242) 2px;
+    color:#f9f8f8;
+}
+.logo-items{
+    display: flex;
+    align-items: center;  
+}
+.menu{
+    display: none;
+    color:rgb(253, 252, 252);
+    font-size: 40px;
+    cursor: pointer;
+    
+}
+.heading h2{
+    color:#fff;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+ion-icon{
+    font-size: 25px;
+}
+.avatar,.add-icon{
+    font-size: 50px;
+    cursor: pointer;
+    color: #03dda0;
+}
+
+form{ 
+    margin-top: 30px;
+    display: flex; 
+    align-items: center;
+    gap: 2px;
+}
+.product-form{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+.search-input{
+    
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+.search-input:focus,input:focus,textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.search-button ,.submitBtn{
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-button:hover,.submitBtn:hover {
+    background-color: #0056b3;
+}
+.add-wrapper{
+    
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Overlay style */
+.modal-overlay {
+     /* Initially hidden */
+     display: none;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+/* Modal style */
+.modal-content {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    min-width: 400px;
+    padding: 20px;
+    transform: translate(-50%, -50%); /* Center the modal */
+    background: rgb(245, 247, 246);  
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure it's above the overlay */
+    max-width: 90%;
+}
+
+/* Close button style */
+.close {
+    cursor: pointer;
+    float: right;
+    color:slateblue;
+    font-size: 2.5rem;
+}
+
+label{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ 
+}
+input,textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+}
+.submitBtn{
+    margin-top: 10px;
+}
+.products-wrapper{
+    width: 100%;
+    padding: 10px;   
+}
+.productsTable {
+    box-shadow: 0px 0px 1px 1px rgb(210, 210, 210);
+    margin: 20px auto;
+    padding: 20px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 100%;
+  }
+  
+  td, th {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .view-btn,.edit-btn,.delete-btn{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+  }
+  
+  .view-btn{
+    color:#4CAF50;
+  }
+  .view-btn:hover {
+    color: #45a049;
+}
+
+.edit-btn { 
+    color: #FFC107;  
+}
+.edit-btn:hover {
+    color: #e0a800;
+}
+
+.delete-btn {
+    color: #F44336;  
+}
+
+.delete-btn:hover {
+    color: #d32f2f;
+}
+
+.product-details-container{
+    display: flex;
+    align-items: center;
+    width: 60vw;
+    height: 70vh;
+    margin: 50px auto;
+}
+.backBtn{
+    
+    color: rgb(0, 1, 2);
+    font-size: 50px;
+    border: none;
+    border-radius: 50px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+ h2{
+    text-align: center;
+    font-size: 40px;
+}
+#product-details{
+
+    width: 100%;
+    height: 80vh;
+    margin: 0px auto;
+    background:linear-gradient(45deg,rgb(251, 222, 227),rgb(205, 244, 221));
+    box-shadow: 1px 1px 1px  lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding:20px ;
+    align-items: center;
+    position: relative;
+}
+
+.product-image{
+    width:200px;
+    max-width: 50%;
+    height: 50%;
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.product-image:hover{
+    transform: scale(2px);
+transition: .5 ease;
+}
+.details{
+   
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    color: #302f2f;
+    padding:0px 50px;
+    position: absolute;
+    bottom:10px;
+}
+@media screen and (max-width:920px){
+    .sidebar{
+        display: none;
+    }
+    .heading{
+        justify-content: space-around;
+    }
+    
+    .menu{
+        display: block;
+    }
+    .main-content{
+    width: 100%;
+    }
+    .productsTable{
+        width: 100%;
+        
+    }
+}
+@media screen and (max-width:993px) {
+    .productsTable{
+        width: 100%;
+    }
+}
