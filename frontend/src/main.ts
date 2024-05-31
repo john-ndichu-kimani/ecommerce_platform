@@ -98,8 +98,10 @@ class ProductsManager {
 
   async loadProducts(): Promise<void> {
     this.products = await this.apiService.fetchProducts();
-     this.renderProducts();
+    this.renderProducts();
+    
   }
+ 
 
   async loadSingleProduct(id: string): Promise<void> {
     await this.apiService.fetchProduct(id);
@@ -149,20 +151,12 @@ class ProductsManager {
 
       productsTable.appendChild(productRow);
 
-      const viewButton = productRow.querySelector(
-        ".view-btn"
-      ) as HTMLButtonElement;
-      const editButton = productRow.querySelector(
-        ".edit-btn"
-      ) as HTMLButtonElement;
-      const deleteButton = productRow.querySelector(
-        ".delete-btn"
-      ) as HTMLButtonElement;
+      const viewButton = productRow.querySelector(".view-btn") as HTMLButtonElement;
+      const editButton = productRow.querySelector(".edit-btn") as HTMLButtonElement;
+      const deleteButton = productRow.querySelector(".delete-btn") as HTMLButtonElement;
 
       viewButton.addEventListener("click", () => {
         this.loadSingleProduct(product.id!);
-
-        
       });
 
       editButton.addEventListener("click", () => {
@@ -175,23 +169,16 @@ class ProductsManager {
     });
   }
 
+
   private openEditModal(product: Product): void {
-    const modalOverlay = document.querySelector(
-      ".modal-overlay"
-    ) as HTMLDivElement;
+    const modalOverlay = document.querySelector(".modal-overlay") as HTMLDivElement;
     const nameTxt = document.getElementById("nameInput") as HTMLInputElement;
-    const categoryTxt = document.getElementById(
-      "categoryInput"
-    ) as HTMLInputElement;
+    const categoryTxt = document.getElementById("categoryInput") as HTMLInputElement;
     const brandTxt = document.getElementById("brandInput") as HTMLInputElement;
-    const descriptionTxt = document.getElementById(
-      "descriptionInput"
-    ) as HTMLTextAreaElement;
+    const descriptionTxt = document.getElementById("descriptionInput") as HTMLTextAreaElement;
     const priceTxt = document.getElementById("priceInput") as HTMLInputElement;
     const imageTxt = document.getElementById("imageInput") as HTMLInputElement;
-    const productForm = document.querySelector(
-      ".product-form"
-    ) as HTMLFormElement;
+    const productForm = document.querySelector(".product-form") as HTMLFormElement;
 
     nameTxt.value = product.name;
     categoryTxt.value = product.category;
@@ -229,44 +216,36 @@ class ProductsManager {
   }
 }
 
-document.addEventListener("DOMContentLoaded" , async () => {
-
+document.addEventListener("DOMContentLoaded", async () => {
   const apiUrl = "http://localhost:3000";
   const apiService = new APIService(apiUrl);
-
 
   const productsContainer = document.querySelector(".productsContainer") as HTMLElement;
   const productDetailsContainer = document.getElementById("product-details") as HTMLElement;
 
-  
   const productManager = new ProductsManager(productsContainer, apiService);
 
   // Check if the URL contains a product ID
   const urlParams = new URLSearchParams(window.location.search);
-  const productId = (urlParams.get("id"));
+  const productId = urlParams.get("id");
 
   if (productId) {
     // Fetch and display the single product
     try {
       const product = await apiService.fetchProduct(productId);
-      displayProductDetails(product);
-
+      displayProductDetails(product, productDetailsContainer);
     } catch (error) {
       console.error("Error fetching product details:", error);
-      displayErrorMessage("Failed to load product details.");
+      displayErrorMessage("Failed to load product details.", productDetailsContainer);
     }
   } else {
     // Load and display all products
-    productManager.loadProducts();
+    await productManager.loadProducts();
   }
 
-  const modalOverlay = document.querySelector(
-    ".modal-overlay"
-  ) as HTMLDivElement;
-  const productForm = document.querySelector(
-    ".product-form"
-  ) as HTMLFormElement;
-  
+  const modalOverlay = document.querySelector(".modal-overlay") as HTMLDivElement;
+  const productForm = document.querySelector(".product-form") as HTMLFormElement;
+
   const addBtn = document.querySelector(".add-icon") as HTMLButtonElement;
   const closeBtn = document.querySelector(".close-icon") as HTMLSpanElement;
 
@@ -284,13 +263,9 @@ document.addEventListener("DOMContentLoaded" , async () => {
     event.preventDefault();
 
     const nameTxt = document.getElementById("nameInput") as HTMLInputElement;
-    const categoryTxt = document.getElementById(
-      "categoryInput"
-    ) as HTMLInputElement;
-    const brandTxt = document.getElementById("brandInput") as HTMLInputElement;
-    const descriptionTxt = document.getElementById(
-      "descriptionInput"
-    ) as HTMLTextAreaElement;
+    const categoryTxt = document.getElementById("categoryInput") as HTMLInputElement;
+       const brandTxt = document.getElementById("brandInput") as HTMLInputElement;
+    const descriptionTxt = document.getElementById("descriptionInput") as HTMLTextAreaElement;
     const priceTxt = document.getElementById("priceInput") as HTMLInputElement;
     const imageTxt = document.getElementById("imageInput") as HTMLInputElement;
 
@@ -305,10 +280,7 @@ document.addEventListener("DOMContentLoaded" , async () => {
 
     if (productManager.currentProductId) {
       // Update existing product
-      await productManager.updateProduct(
-        productManager.currentProductId,
-        product
-      );
+      await productManager.updateProduct(productManager.currentProductId, product);
     } else {
       // Add new product
       await productManager.addProduct(product);
@@ -321,34 +293,46 @@ document.addEventListener("DOMContentLoaded" , async () => {
     window.location.reload();
   });
 
-
-  function displayProductDetails(product: Product): void {
-    if (productDetailsContainer) {
-      productDetailsContainer.innerHTML = `
-      
+  // function displayProductsToUsers(product:Product,wrapper:HTMLElement): void{
+   
+  //     wrapper.classList.add('product-card');
+  //     wrapper.innerHTML = `
+  //       <img src="${product.imageUrl}" alt='${product.name}' class="product-image">
+  //       <h2>${product.name}</h2>
+  //       <p>Kshs. <span>${product.price}</span></p>
+        
+  //     `;
+    
+  // }
+  function displayProductDetails(product: Product, container: HTMLElement): void {
+    if (container) {
+      container.innerHTML = `
         <img src="${product.imageUrl}" alt="${product.name}" class="product-image">
         <div class='details'>
-        <h3 style="color:blueviolet; font-size:30px">${product.name}</h3>
-        <p><strong>Category:</strong> ${product.category}</p>
-        <p><strong>Brand:</strong> ${product.brand}</p>
-        <p><strong>Price:</strong> kshs.${product.price}</p>
-        <p> ${product.description}</p>
-        </div> 
+          <h3 style="color:blueviolet; font-size:30px">${product.name}</h3>
+          <p><strong>Category:</strong> ${product.category}</p>
+          <p><strong>Brand:</strong> ${product.brand}</p>
+          <p><strong>Price:</strong> kshs.${product.price}</p>
+          <p>${product.description}</p>
+        </div>
       `;
     }
-
-
   }
 
-  function displayErrorMessage(message: string): void {
-    if (productDetailsContainer) {
-      productDetailsContainer.innerHTML = `<p class="error-message">${message}</p>`;
+  function displayErrorMessage(message: string, container: HTMLElement): void {
+    if (container) {
+      container.innerHTML = `<p class="error-message">${message}</p>`;
     }
   }
-
-    function goBack() {
-   window.location.href='http://127.0.0.1:5500/frontend/products.html'
-    }
-
   
+  function goBack(): void {
+    window.location.href = 'http://127.0.0.1:5500/frontend/products.html';
+  }
+
+  // Adding the goBack function to a button if needed
+  const backButton = document.querySelector(".back-button") as HTMLButtonElement;
+  if (backButton) {
+    backButton.addEventListener("click", goBack);
+  }
 });
+

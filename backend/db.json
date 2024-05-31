@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": "5f31",
-      "name": "Laptop",
-      "category": "Electronic",
-      "brand": "HP",
-      "description": "Programming Laptop",
-      "price": 30000,
-      "imageUrl": "https://th.bing.com/th/id/OIP.ahxr8BqmLWHE25MMjsbR5AHaHa?w=145&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
-    },
-    {
       "id": "ca55",
       "name": "Product",
       "category": "Fashion",
@@ -26,6 +17,24 @@
       "description": "Black sneakers for excercise",
       "price": 500,
       "imageUrl": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/29/557985/1.jpg?4685"
+    },
+    {
+      "id": "6eb9",
+      "name": "Shoe",
+      "category": "Ladies Shoes",
+      "brand": "Sneaker",
+      "description": "description",
+      "price": 400,
+      "imageUrl": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/29/557985/1.jpg?4685"
+    },
+    {
+      "id": "cdc6",
+      "name": "T-shirt",
+      "category": "Men Fashion",
+      "brand": "Fashion",
+      "description": "Dress To Impress",
+      "price": 500,
+      "imageUrl": "https://th.bing.com/th?id=OIF.pvmKIw0QrPEarjiqAY%2f3Zw&w=202&h=303&c=7&r=0&o=5&dpr=1.5&pid=1.7"
     }
   ]
 }
