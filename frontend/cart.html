@@ -9,16 +9,20 @@
 <body>
    
     <main>
+        <button style="background-color: rgb(24, 24, 24); padding: 1rem 2rem;color: aliceblue; cursor: pointer;margin: 0px;">
+            <a href="/frontend/user_ui.html" style="text-decoration: none; color: aliceblue; font-size: 15px;">Continue Shopping</a>
+        </button>
         <section id="cart">
-            <h1>Your Cart</h1>
+            <h2 style="text-align: center; margin: 10px;">Your Cart</h2>
             <div class="cartContainer"></div>
-            <div class="cart-summary">
-                <h2>Total: <span class="cart-total">0</span> Kshs</h2>
-                <button class="checkout-btn">Checkout</button>
-            </div>
         </section>
     </main>
     <footer></footer>
     <script src="/frontend/dist/user.js"></script>
+    <script>
+        function checkout(){
+            alert('Cliked Checkout');
+        }
+    </script>
 </body>
 </html>

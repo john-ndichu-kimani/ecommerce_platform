@@ -9,13 +9,14 @@ body{
     font-family: sans-serif;
 }
 header{
-    background-color: #f2efefae;
+    background-color: #f2efeff0;
     width: 100vw;
     height: 15vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: fixed;
+
 }
 
 .logo{
@@ -38,16 +39,20 @@ header ul li a{
     font-size: 20px;
     color: #434242;
 }
+.cart-items{
+    display: flex;  
+}
 .cartBtn{
+    cursor: pointer;
     color: rgb(56, 60, 56);
     font-size: 50px;
 }
 main{
-    height: 100%;
+    height: 100vh;
     width: 100vw;
 }
 #hero{
-    height: 70vh;
+    height: 80vh;
     width: 100vw;
     background-image: linear-gradient(rgba(0,0,0,.1),rgba(4, 170, 112, 0.908)),url(/frontend/images/banner1.jpg);
     background-position: center;
@@ -57,25 +62,30 @@ main{
     color: #fff;    
 }
 .hero-body{
-    width: 60%;
-    margin: 30px auto;
+    width:70%;
+    margin: 90px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding:20px;
 }
-.hero-btn{
+.hero-btn,.checkoutBtn{
     text-decoration: none;
     background-color: #fff;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     border-radius: 5px;
     color: #161616;
 }
-#user-products{
+
+.hero-btn{
+    margin-top: 30px;
+}
+#userProducts{
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     padding-bottom: 100px;
+   
    
 }
 h1{
@@ -84,24 +94,28 @@ h1{
     margin: 50px
 }
 
-.productsContainer{
+.productsContainer,.cartContainer{
     width: 80%;
-    height: 100vh;
+    height: 60vh;
     margin: 0px auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 16px;
+   
 
 }
-.card-image{
+.cartContainer{
+    height: 60vh;
+}
+.card-image,.cart-image{
     width: 100%;
-    height: 70%;
+    height: 200px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .product-card{
-height: 400px;
 background-color: rgb(251, 253, 252);
 box-shadow:0px 0px 10px lightgray;
 display: flex;
@@ -109,11 +123,27 @@ flex-direction: column;
 align-items: center;
 }
 
+.cart-item{
+    border: solid lightgray 1px;
+}
+
+.cart-btn{
+    margin-top: 30px;
+    background-color: #424343;
+    color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+}
+
+
 #cart{
     height: 100vh;
     width: 100vw;
-    text-align: center;  
+    text-align: center;
+    color: #434242;
 }
 /* .cartContainer{
    
 } */
+
+
